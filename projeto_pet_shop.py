@@ -1,13 +1,17 @@
-lista_ADM = [['g', 'g@.com', 'gutim123']]
-lista = [['g', 'gg@.com', 'gutim123']]
+lista = [
+    ['g', 'gg@.com', 'gutim123',True],['g', 'g@.com', 'gutim123',False]]
 codigo_ADM = ['123456']
-lista_animais = [['Gato', 'Banho Arretado', 'O banho completo, o melhor de todos', 50.00],
+lista_animais = [
+    ['Gato', 'Banho Arretado', 'O banho completo, o melhor de todos', 50.00],
                  ['Cachorro Pequeno', 'Banho Arretado', 'O banho completo, o melhor de todos', 50.00]]
-lojao = [['racao gato', 'gato premio', 25.00],
+lojao = [
+    ['racao gato', 'gato premio', 25.00],
          ['racao cachorro', 'cachorro premio', 35.50]]
 agendamento = []
-opcao = 0
 compras_cliente = []
+
+opcao = 0
+
 while opcao != 3:
     print('૮･ﻌ･ა MENU PRINCIPAL ≽(•⩊ •マ≼')
     print('[1]cadastro')
@@ -33,7 +37,7 @@ while opcao != 3:
             continue
 
         if '@' in email and '.com' in email:
-            print('cadastro conpleto')
+            print('email correto')
         else:
             print('email nao corresponde')
         if senha == confirmar_senha:
@@ -47,7 +51,8 @@ while opcao != 3:
             print('senhas não coincidem, tente novamente')
 
         if (senha == confirmar_senha) and len(senha) >= 8:
-            lista.append([nome, email, senha])
+            lista.append([nome, email, senha,True])
+            print('cadastro completo')
 
     elif opcao == 2:
 
@@ -56,7 +61,7 @@ while opcao != 3:
         login_sucesso = False
 
         for l in lista:
-            if l[1] == email and l[2] == senha:
+            if l[1] == email and l[2] == senha and l[3] == True:
                 print(f'seja bem vindo {l[0]}')
                 login_sucesso = True
 
@@ -162,106 +167,105 @@ while opcao != 3:
 
 
 
-    elif opcao == 763:
-        email = input('digite seu email: ')
-        senha = input('digite seu senha: ')
+        for l in lista:
+            if l[1] == email and l[2] == senha and l[3] == False:
 
-        login_sucesso = False
-        for l in lista_ADM:
-            if l[1] == email and l[2] == senha:
-                print(f'seja bem vindo {l[0]}')
-                login_sucesso = True
+                login_sucesso = False
+                for l in lista:
+                    if l[1] == email and l[2] == senha:
+                        print(f'seja bem vindo {l[0]}')
+                        login_sucesso = True
 
-                opcao_ADM = 0
-                while opcao_ADM != 9:
-                    print('૮･ﻌ･ა ------ ADM ------ ≽(•⩊ •マ≼')
-                    print('[1]adicionar banho e valor')
-                    print('[2]remover banho e valor')
-                    print('[3]ver banhos ')
-                    print('[4]adicionar produtos no lojao')
-                    print('[5]remover produtos do lojao')
-                    print('[6]ver lojao')
-                    print('[7]ver a agenda')
-                    print('[8]cadastrar novo ADM')
-                    print('[9]sair')
-                    print('૮･ﻌ･ა -------------- ≽(•⩊ •マ≼')
+                        opcao_ADM = 0
+                        while opcao_ADM != 9:
+                            print('૮･ﻌ･ა ------ ADM ------ ≽(•⩊ •マ≼')
+                            print('[1]adicionar banho e valor')
+                            print('[2]remover banho e valor')
+                            print('[3]ver banhos ')
+                            print('[4]adicionar produtos no lojao')
+                            print('[5]remover produtos do lojao')
+                            print('[6]ver lojao')
+                            print('[7]ver a agenda')
+                            print('[8]cadastrar novo ADM')
+                            print('[9]sair')
+                            print('૮･ﻌ･ა -------------- ≽(•⩊ •マ≼')
 
-                    opcao_ADM = int(input('digite uma opcao acima: '))
+                            opcao_ADM = int(input('digite uma opcao acima: '))
 
-                    if opcao_ADM == 1:
-                        animais = input('digite o animal ')
-                        nome_banho = input('digite o nome do banho')
-                        descricao_banho = input('digite a descricao do banho')
-                        valor = float(input('digite o valor do banho'))
+                            if opcao_ADM == 1:
+                                animais = input('digite o animal ')
+                                nome_banho = input('digite o nome do banho')
+                                descricao_banho = input('digite a descricao do banho')
+                                valor = float(input('digite o valor do banho'))
 
-                        lista_animais.append([animais, nome_banho, descricao_banho, valor])
+                                lista_animais.append([animais, nome_banho, descricao_banho, valor])
 
 
-                    elif opcao_ADM == 2:
-                        print('banho disponíveis:')
-                        for banho in range(len(lista_animais)):
-                            print(f'{banho} --- {lista_animais[banho]}')
-                        remove = int(input('Digite o número da banho para remover: '))
-                        lista_animais.pop(remove)
+                            elif opcao_ADM == 2:
+                                print('banho disponíveis:')
+                                for banho in range(len(lista_animais)):
+                                    print(f'{banho} --- {lista_animais[banho]}')
+                                remove = int(input('Digite o número da banho para remover: '))
+                                lista_animais.pop(remove)
 
-                    elif opcao_ADM == 3:
-                        for banho in lista_animais:
-                            print(f"{banho[0]:<25} | {banho[1]:<10} | {banho[2]:>10} | {banho[3]:<10}")
-                            print("-" * 60)
-                    elif opcao_ADM == 4:
-                        produto = input('adiciona nome do produto')
-                        marca = input('adicione sua marca')
-                        valor = float(input('qual sera o valo do produtor'))
-                        lojao.append([produto, marca, valor])
+                            elif opcao_ADM == 3:
+                                for banho in lista_animais:
+                                    print(f"{banho[0]:<25} | {banho[1]:<10} | {banho[2]:>10} | {banho[3]:<10}")
+                                    print("-" * 60)
+                            elif opcao_ADM == 4:
+                                produto = input('adiciona nome do produto')
+                                marca = input('adicione sua marca')
+                                valor = float(input('qual sera o valo do produtor'))
+                                lojao.append([produto, marca, valor])
 
-                    elif opcao_ADM == 5:
-                        print('produtos disponíveis:')
-                        for prodtu in range(len(lojao)):
-                            print(f'{prodtu} --- {lojao[prodtu]}')
-                        remover = int(input('Digite o número da banho para remover: '))
-                        lista_animais.pop(remover)
+                            elif opcao_ADM == 5:
+                                print('produtos disponíveis:')
+                                for prodtu in range(len(lojao)):
+                                    print(f'{prodtu} --- {lojao[prodtu]}')
+                                remover = int(input('Digite o número da banho para remover: '))
+                                lista_animais.pop(remover)
 
-                    elif opcao_ADM == 6:
-                        for item in lojao:
-                            print(f"{item[0]:<25} | {item[1]:<10} | {item[2]:>10}")
-                            print("-" * 60)
+                            elif opcao_ADM == 6:
+                                for item in lojao:
+                                    print(f"{item[0]:<25} | {item[1]:<10} | {item[2]:>10}")
+                                    print("-" * 60)
 
-                    elif opcao_ADM == 7:
-                        for agenda in agendamento:
-                            print(agenda)
+                            elif opcao_ADM == 7:
+                                for agenda in agendamento:
+                                    print(agenda)
 
-                    elif opcao_ADM == 8:
-                        nome = input('digite seu nome: ')
-                        email = input('digite seu email: ')
-                        senha = input('digite sua senha: ')
-                        confirmar_senha = input('digite sua senha novamente: ')
-                        codigo_adm = input('digite o codigo do ADM: ')
+                            elif opcao_ADM == 8:
+                                nome = input('digite seu nome: ')
+                                email = input('digite seu email: ')
+                                senha = input('digite sua senha: ')
+                                confirmar_senha = input('digite sua senha novamente: ')
+                                codigo_adm = input('digite o codigo do ADM: ')
 
-                        email_existente = False
-                        for l in lista_ADM:
-                            if l[1] == email:
-                                print('email ja exister')
-                                email_existente = True
-                                break
-                        if email_existente:
-                            continue
+                                email_existente = False
+                                for l in lista:
+                                    if l[1] == email:
+                                        print('email ja exister')
+                                        email_existente = True
+                                        break
+                                if email_existente:
+                                    continue
 
-                        if '@' in email and '.com' in email:
-                            print('n/')
-                        else:
-                            print('email nao corresponde')
-                        if senha == confirmar_senha:
-                            if len(senha) >= 8:
-                                print('senha responde todos requisitos')
+                                if '@' in email and '.com' in email:
+                                    print('n/')
+                                else:
+                                    print('email nao corresponde')
+                                if senha == confirmar_senha:
+                                    if len(senha) >= 8:
+                                        print('senha responde todos requisitos')
 
-                            else:
-                                print('digite senha maior que 7')
+                                    else:
+                                        print('digite senha maior que 7')
 
-                        else:
-                            print('senhas não coincidem, tente novamente')
+                                else:
+                                    print('senhas não coincidem, tente novamente')
 
-                        if (codigo_adm in codigo_ADM) and (senha == confirmar_senha) and len(senha) >= 8:
-                            lista_ADM.append([nome, email, senha])
+                                if (codigo_adm in codigo_ADM) and (senha == confirmar_senha) and len(senha) >= 8:
+                                    lista.append([nome, email, senha,False])
 
     elif opcao == 3:
         print('saiuuuuu')
